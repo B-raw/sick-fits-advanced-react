@@ -72,7 +72,7 @@ class CreateItem extends Component {
           e.preventDefault();
           // call the mutation
           const res = await createItem();
-          //change them to single item page
+          //change the user to single item page
           Router.push({
             pathname: '/item',
             query: { id: res.data.createItem.id }
