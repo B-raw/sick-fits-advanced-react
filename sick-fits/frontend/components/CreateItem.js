@@ -30,8 +30,8 @@ class CreateItem extends Component {
   state = {
     title: 'CoolShoes',
     description: 'I love those context',
-    image: 'dog.jpg',
-    largeImage: 'large-dog.jpg',
+    image: null,
+    largeImage: null,
     price: 1000,
   };
 
@@ -46,6 +46,11 @@ class CreateItem extends Component {
   uploadFile = async e => {
     console.log('uploading file...')
     const files = e.target.files;
+    // if the user exits the file browser, they can get an error as this function continues to run. Also, any previous image shows in preview. The below if statement fixes that.
+    if(files.length == 0) {
+      this.setState({ image: null, largeImage: null });
+      return;
+    }
     const data = new FormData()
     data.append('file', files[0]);
     data.append('upload_preset', 'sickfits')
@@ -67,7 +72,7 @@ class CreateItem extends Component {
     <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
       {/* the only child of a query or mutation can be a function. CreateItem is the mutationfunction.  */}
       {(createItem, { loading, error }) => (
-      <Form onSubmit={async (e) => {
+        <Form onSubmit={async (e) => {
           //Stop the form from submitting
           e.preventDefault();
           // call the mutation
@@ -77,20 +82,20 @@ class CreateItem extends Component {
             pathname: '/item',
             query: { id: res.data.createItem.id }
           })
-      }}>
-      <Error error={error} />
-        <fieldset disabled={loading} aria-busy={loading}>
-          <label htmlFor="file">
-            Image
-            <input
-              type="file"
-              id="file"
-              name="file"
-              placeholder="Upload an Image"
-              required
-              onChange={this.uploadFile}
-            />
-            {this.state.image && <img width="200" src={this.state.image} alt="Upload Preview" />}
+        }}>
+          <Error error={error} />
+          <fieldset disabled={loading} aria-busy={loading}>
+            <label htmlFor="file">
+              Image
+              <input
+                type="file"
+                id="file"
+                name="file"
+                placeholder="Upload an Image"
+                required
+                onChange={this.uploadFile}
+              />
+              {this.state.image && <img width="200" src={this.state.image} alt="Upload Preview" />}
           </label>
 
           <label htmlFor="title">
