@@ -9,7 +9,7 @@ const Query = {
 
   me(parent, args, ctx, info) {
     const userId = ctx.request.userId
-    // check if there is a current user idea
+    // check if there is a current user id
     if(!userId) {
       return null;
     }
