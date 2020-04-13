@@ -23,8 +23,13 @@ type Mutation {
     signup(
       email: String!,
       password: String!,
-      name: String!
+      name: String!,
       ): User!
+
+    signin(
+      email: String!,
+      password: String!,
+      )
 
 }
 
@@ -39,4 +44,6 @@ type Query {
   item(where: ItemWhereUniqueInput!): Item
 
   itemsConnection(where: ItemWhereInput): ItemConnection!
+
+  me: User
 }

@@ -42,7 +42,7 @@ class Signup extends Component {
             await signup();
             this.setState({email: "", name: "", password: "",})
           }}>
-            <fieldeset disabled={loading} aria-busy={loading}>
+            <fieldset disabled={loading} aria-busy={loading}>
               <h2>Sign Up For An Account</h2>
               <Error error={error} />
               <label htmlFor="email">
@@ -58,7 +58,7 @@ class Signup extends Component {
                 <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.saveToState}/>
               </label>
               <button type="submit">Sign Up!</button>
-            </fieldeset>
+            </fieldset>
           </Form>)
         }}
       </Mutation>
