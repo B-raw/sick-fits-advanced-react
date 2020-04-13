@@ -63,7 +63,6 @@ class Signin extends Component {
       </Mutation>
     );
   }
-
 }
 
 export default Signin;
