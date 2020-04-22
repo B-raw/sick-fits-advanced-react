@@ -44,7 +44,6 @@ class CreateItem extends Component {
   }
 
   uploadFile = async e => {
-    console.log('uploading file...')
     const files = e.target.files;
     // if the user exits the file browser, they can get an error as this function continues to run. Also, any previous image shows in preview. The below if statement fixes that.
     if(files.length == 0) {
