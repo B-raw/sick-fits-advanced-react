@@ -9,7 +9,7 @@ type Mutation {
     description: String,
     price: Int,
     image: String,
-    largeImage: String
+    largeImage: String,
     ): Item!
 
   updateItem(
