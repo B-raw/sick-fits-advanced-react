@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const { randomBytes } = require('crypto');
 const { promisify } = require('util');
 const { transport, makeANiceEmail } = require('../mail')
+const { hasPermission } = require('../utils');
+
 
 const Mutations = {
   async createItem(parent, args, ctx, info) {
@@ -44,7 +46,7 @@ const Mutations = {
     //find the items TODO add user names
     const item = await ctx.db.query.item({ where }, `{ id, title }`);
     //check if they own the item/have permissions
-    //TODO
+    //todo
     //delete it
     return ctx.db.mutation.deleteItem({where}, info);
   },
@@ -163,8 +165,36 @@ const Mutations = {
     })
     // 8. return the new user
     return updatedUser;
-  }
+  },
 
+  async updatePermissions(parent, args, ctx, info) {
+    // 1. check if they are logged in?
+    if(!ctx.request.userId) {
+      throw new Error("Must be logged in!");
+    }
+    // 2. query current user
+    const currentUser = await ctx.db.query.user(
+      {
+        where: {
+          id: ctx.request.userId
+        },
+      },
+      info
+    );
+    // 3. check if they have permissions to do this
+    hasPermission(currentUser, ['ADMIN', 'PERMISSIONUPDATE']);
+    // 4. update the permissions
+    return await ctx.db.mutation.updateUser({
+      data: {
+        permissions: {
+          set: args.permissions,
+        }
+      },
+      where: {
+        id: args.userId
+      },
+    }, info);
+  },
 };
 
 module.exports = Mutations;
