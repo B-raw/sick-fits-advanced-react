@@ -1,5 +1,6 @@
 import React from 'react';
-import Nav from './Nav'
+import Nav from './Nav';
+import Cart from './Cart'
 
 const Header = ({}) => (
   <div>
@@ -11,7 +12,7 @@ const Header = ({}) => (
       <p>Search</p>
     </div>
     <div>
-      Cart
+      <Cart></Cart>
     </div>
   </div>
 );

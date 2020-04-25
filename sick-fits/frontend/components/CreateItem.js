@@ -5,6 +5,7 @@ import Router from 'next/router';
 import Form from './styles/Form';
 import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
+import SickButton from './styles/SickButton'
 
 const CREATE_ITEM_MUTATION = gql`
   mutation CREATE_ITEM_MUTATION(
@@ -74,6 +75,8 @@ class CreateItem extends Component {
         <Form onSubmit={async (e) => {
           //Stop the form from submitting
           e.preventDefault();
+          //check if there is a pending file upload
+          //to do
           // call the mutation
           const res = await createItem();
           //change the user to single item page
@@ -134,7 +137,7 @@ class CreateItem extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <button type="submit">Submit</button>
+          <SickButton type="submit">Submit</SickButton>
         </fieldset>
       </Form>
       )}
