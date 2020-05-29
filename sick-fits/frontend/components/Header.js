@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from './Nav';
 import Cart from './Cart'
+import Search from './Search'
 
 const Header = ({}) => (
   <div>
@@ -9,7 +10,7 @@ const Header = ({}) => (
       <Nav />
     </div>
     <div className="sub-bar">
-      <p>Search</p>
+      <Search />
     </div>
     <div>
       <Cart></Cart>
