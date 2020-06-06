@@ -50,6 +50,20 @@ const Query = {
     return order;
   },
 
+  async orders(parent, args, ctx, info) {
+    // 1. make sure they are logged in
+    const userId = ctx.request.userId
+    if(!userId) {
+      throw new Error("You arnae logged in loon");
+    }
+    // 2. query for all orders they own
+    const orders = await ctx.db.query.orders({
+      where: { user: { id: userId }}
+    }, info);
+    // 3. return the orders
+    return orders;
+  }
+
 };
 
 module.exports = Query;

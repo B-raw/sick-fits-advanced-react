@@ -300,7 +300,6 @@ const Mutations = {
         user: { connect: { id: userId } },
       }
       delete orderItem.id;
-      console.log(orderItem)
       return orderItem;
     })
     // 5. create the order
@@ -316,9 +315,11 @@ const Mutations = {
     });
     // 6. clean up - clear users cart, delete cartItems
     const cartItemsIds = user.cart.map(cartItem => cartItem.id);
+    console.log(user.cart)
     await ctx.db.mutation.deleteManyCartItems({
       where: { id_in: cartItemsIds, },
     });
+    console.log(user.cart)
     // 7. return the order to the client
     return order;
   }

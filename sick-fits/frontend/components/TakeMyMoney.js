@@ -28,7 +28,7 @@ const CREATE_ORDER_MUTATION = gql`
 const Composed = adopt({
   user: ({ render }) => <User>{render}</User>,
   toggleCart: ({ render }) => <Mutation mutation={TOGGLE_CART_MUTATION}>{render}</Mutation>,
-  createOrder: ({ render }) => <Mutation mutation={CREATE_ORDER_MUTATION}>{render}</Mutation>,
+  createOrder: ({ render }) => <Mutation mutation={CREATE_ORDER_MUTATION} refetchQueries={[{ query: CURRENT_USER_QUERY }]}>{render}</Mutation>,
 });
 
 function totalItems(cart) {
@@ -59,7 +59,6 @@ class TakeMyMoney extends React.Component {
       <Composed>
         {({ user, toggleCart, createOrder }) => {
           const me = user.data.me;
-
           return (
             <StripeCheckout
               amount={calcTotalPrice(me.cart)}
