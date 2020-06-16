@@ -29,6 +29,10 @@ TO DO
 5. open localhost:7777 and the app will be there
 6. open localhost:4444 and GraphQL Yoga Playground is there
 
+Some features may not work on your local device as you need to configure Cloudinary and Stripe.
+
+TO DO - instructions on setting up third party providers eg cloudinary set up, Stripe set up etc.
+
 # Tests
 In root directory run `npm run tests` to run the Jest/Enzyme tests. (Not yet fully covering the codebase).
 
