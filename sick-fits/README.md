@@ -1,4 +1,4 @@
-# Sick Fits
+# Sick Fits by Michael Barry
 This is an ecommerce store where users can CRUD items, shop, sell items and buy items using Stripe.
 
 # Motivation
