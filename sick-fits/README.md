@@ -1,6 +1,12 @@
 # Sick Fits by Michael Barry
 This is an ecommerce store where users can CRUD items, shop, sell items and buy items using Stripe.
 
+It is still in development.
+TO DO
+Complete tasks
+Finish styling
+Deploy
+
 # Motivation
 I did [Wes Bos' Advanced React course](https://advancedreact.com/) to update and advance my React skills, with the added benefit of learning GraphQL which we have been using in my current company Medic Bleep.
 
@@ -21,11 +27,11 @@ TO DO - insert diagram
 # Features
 TO DO
 
-# Installation
+# Local Deployment
 1. clone to a folder
 2. Open two terminal tabs - one for frontend and one for backend
-3. in one terminal: a) `cd ./sickfits/backend` then b) `npm run dev`
-4. in another terminal: a) `cd ./sickfits/frontend` then b) `npm run dev`
+3. in one terminal: a) `cd ./sickfits/backend` then b) `npm install` then c) `npm run dev`
+4. in another terminal: a) `cd ./sickfits/frontend` then b) `npm install` then c) `npm run dev`
 5. open localhost:7777 and the app will be there
 6. open localhost:4444 and GraphQL Yoga Playground is there
 
